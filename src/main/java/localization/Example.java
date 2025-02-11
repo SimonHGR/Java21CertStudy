@@ -18,7 +18,7 @@ public class Example {
     System.out.println("name is " + name);
     System.out.println("flavor is " + bundle.getString("flavor"));
 
-    System.out.println("---------- Canadian ------------");
+    System.out.println("---------- French ------------");
     bundle = ResourceBundle.getBundle("com.myresources.Labels", Locale.FRENCH);
     name = bundle.getString("name");
     System.out.println("name is " + name);
