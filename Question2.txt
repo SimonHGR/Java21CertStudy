@@ -1,0 +1,109 @@
+Given:
+sealed interface Message permits Upper, Lower, NoChange {
+  String message();
+  String get();
+}
+record Upper(String message) implements Message {
+  public String get() {
+    return message.toUpperCase();
+  }
+}
+record Lower(String message) implements Message {
+  public String get() {
+    return message.toLowerCase();
+  }
+}
+non-sealed class NoChange implements Message {
+  private String s;
+  NoChange(String s) {
+    this.s = s;
+  }
+  public String get() {
+    return s;
+  }
+  public String message() {
+    return s;
+  }
+}
+public class TryIt {
+  public static void main(String[] args) throws Throwable {
+    List<Message> messages = List.of(
+        new Upper("One"), new Lower("TWO"),
+        new NoChange("Three"), new Upper("four"));
+    // GOAL: One,two,Three,FOUR
+
+// Line n1
+
+    System.out.println(messages.stream()
+        .map(transformer)
+        .collect(Collectors.joining(",")));
+  }
+}
+
+Which, when added at line n1, result in the output:
+One,two,Three,FOUR
+
+A)
+Function<Message, String> transformer = m -> switch (m) {
+  case Upper(String msg) when msg.length() > 3 -> m.get();
+  case Upper(String msg) -> msg;
+  case Lower(String msg) when msg.length() < 4 -> m.get();
+  case Lower l -> l.message();
+  case NoChange nc -> nc.message();
+};
+
+B)
+Function<Message, String> transformer = m -> switch (m) {
+    case Upper(String msg) when msg.length() > 3 -> m.message();
+    case Lower(String msg) when msg.length() < 4 -> msg;
+    case NoChange nc -> nc.message();
+    default -> "X";
+};
+
+C)
+Function<Message, String> transformer = m -> switch (m) {
+    case Upper(String msg) when msg.length() > 2 -> m.message();
+    case Lower(String msg) when msg.length() < 4 -> msg;
+    case NoChange nc -> nc.message();
+};
+
+D)
+Function<Message, String> transformer = m -> switch (m) {
+  case Upper u -> u.get();
+  case Lower l -> l.get();
+  case NoChange nc -> nc.get();
+};
+
+E)
+Function<Message, String> transformer = m -> switch (m) {
+  default -> m.message();
+  case Upper u -> u.message();
+  case Lower l -> l.message();
+};
+
+F)
+Function<Message, String> transformer = m -> switch (m) {
+  case Upper u when u.message().length() > 3 -> u.get();
+  case Lower l when l.get().length() < 4 -> l.get();
+  case Message msg -> msg.message();
+};
+
+G)
+Function<Message, String> transformer = m -> {
+  Object obj = m.message();
+  return switch (obj) {
+    case "One" -> "ONE";
+    case "TWO" -> "two";
+    case Object o -> m.message();
+  };
+};
+
+H)
+Function<Message, String> transformer = m -> switch (m) {
+  case null -> "null";
+  case Upper(String msg) when msg.length() > 3 -> msg.toUpperCase();
+  case Upper u -> u.get();
+  case NoChange nc -> nc.message();
+  case Lower(String msg) when msg.length() > 3 -> msg;
+  case Object o -> "X";
+};
