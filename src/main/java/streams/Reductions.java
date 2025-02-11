@@ -53,12 +53,12 @@ public class Reductions {
     System.out.println("---------------------------");
 
     // Collect operations work with mutable intermediate result types
-    School.SCHOOL.getStudents().stream()
-//        .parallel() // see the messages when this is uncommented
-        .mapToDouble(s -> s.gpa())
-        .collect(MAverage::new, MAverage::include, MAverage::merge)
-        .mean()
-        .ifPresentOrElse(m -> System.out.println("average grade is " + m),
-            () -> System.out.println("No grades to average"));
+//    School.SCHOOL.getStudents().stream()
+////        .parallel() // see the messages when this is uncommented
+//        .mapToDouble(s -> s.gpa())
+//        .collect(MAverage::new, MAverage::include, MAverage::merge)
+//        .mean()
+//        .ifPresentOrElse(m -> System.out.println("average grade is " + m),
+//            () -> System.out.println("No grades to average"));
   }
 }

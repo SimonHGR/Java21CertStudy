@@ -177,7 +177,7 @@ sa[0] = "Hello";
 System.out.println(ls.get(0));
 
 36) How could you print the contents of a Map that has String keys
-sorted in character order ("alphabeitc" for Roman character sets)
+sorted in character order ("alphabetic" for Roman character sets)
 of the keys?
 
 37) Which Stream method always results in the same number of
