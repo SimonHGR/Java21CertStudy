@@ -1,5 +1,7 @@
 package s9threading;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class E3Visibility {
   static int counter = 0;
 //  static volatile int counter = 0;

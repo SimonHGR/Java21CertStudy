@@ -1,6 +1,7 @@
 package s9threading;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -43,10 +44,10 @@ Key differences between Platform and Virtual threads:
 public class E1Simple {
   public static void main(String[] args) throws InterruptedException {
     final int TASK_COUNT = 4;
-    Thread.Builder builder = Thread.ofPlatform();
+//    Thread.Builder builder = Thread.ofPlatform();
 
     // the virtual thread
-//    Thread.Builder builder = Thread.ofVirtual();
+    Thread.Builder builder = Thread.ofVirtual();
 
     List<Thread> threadList = new ArrayList<>();
     for (int idx = 0; idx < TASK_COUNT; idx++) {
@@ -61,11 +62,11 @@ public class E1Simple {
     System.out.println("Waiting for tasks to complete");
     // this is necessary for virtual threads, but with platform threads
     // the jvm waits for non-daemon (which is default) to all complete
-//    Iterator<Thread> it = threadList.iterator();
-//    while (it.hasNext()) {
-//      it.next().join();
-//      it.remove();
-//    }
-//    System.out.println("Tasks completed, exiting!");
+    Iterator<Thread> it = threadList.iterator();
+    while (it.hasNext()) {
+      it.next().join();
+      it.remove();
+    }
+    System.out.println("Tasks completed, exiting!");
   }
 }

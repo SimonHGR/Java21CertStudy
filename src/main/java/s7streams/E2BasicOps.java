@@ -40,9 +40,10 @@ public class E2BasicOps {
     // of the stream of courses, so we can map that stream
     // and combine the course name with the student name
     School.SCHOOL.getStudents().stream()
-        .flatMap(s ->
-            s.courses().stream().map(c -> "Student " + s.name()
-              + " takes " + c))
+        .flatMap((Student s) -> {
+          return s.courses().stream().map(c -> "Student " + s.name()
+              + " takes " + c);
+        })
         .forEachOrdered(System.out::println);
 
     System.out.println("---------------------------");

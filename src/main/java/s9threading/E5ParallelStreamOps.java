@@ -16,14 +16,14 @@ public class E5ParallelStreamOps {
     // ForkJoinPool.commonPool() are also involved
     // Notice that the sharding brings more data than is needed into play,
     // and then limit cuts it off. Sometimes parallel mode isn't faster...
-    long c = IntStream.iterate(0, x -> x + 1) // simple counting
+//    long c = IntStream.iterate(0, x -> x + 1) // simple counting
 //        .parallel()
 //        .limit(100)
-        .peek(intCons)
-        .filter(x -> true)
-        .limit(100)
-        .count();
-    System.out.println(c);
+//        .peek(intCons)
+//        .filter(x -> true)
+////        .limit(100)
+//        .count();
+//    System.out.println(c);
 
     System.out.println("---------------------------");
     // parallel mode should not mutate data, only create new values
@@ -64,17 +64,17 @@ public class E5ParallelStreamOps {
     // order and restores it at collections. Maintaining order can be very
     // memory intensive, so unordered() can turn it off. Some data sources
     // might not be ordered, and some terminal operations might not.
-    System.out.println("Order at collection");
-    String res = IntStream.iterate(0, x -> (x + 1) % 26)
-//        .parallel()
-//        .unordered()
-        .limit(26 * 2)
-        .mapToObj(x -> "" + (char)(x + 'A'))
-        .peek(x -> System.out.print(x))
-        .collect(Collectors.joining());
-    System.out.println("\n" + res);
-    System.out.println("---------------------------");
-
+//    System.out.println("Order at collection");
+//    String res = IntStream.iterate(0, x -> (x + 1) % 26)
+////        .parallel()
+////        .unordered()
+//        .limit(26 * 2)
+//        .mapToObj(x -> "" + (char)(x + 'A'))
+//        .peek(x -> System.out.print(x))
+//        .collect(Collectors.joining());
+//    System.out.println("\n" + res);
+//    System.out.println("---------------------------");
+//
     // sorting can't handle unbounded data
     // this version runs forever, comment it out when satisfied!
 //    ThreadLocalRandom.current().doubles()

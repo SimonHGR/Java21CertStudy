@@ -31,6 +31,7 @@ public class E12PatternInstanceof {
     }
 
     if (stuff instanceof List<?> lq) {
+//      Object o = lq.get(0);
       System.out.println("Also, it's a list, raw, wildcard (still unhelpful)");
     }
 
@@ -41,6 +42,7 @@ public class E12PatternInstanceof {
     // However, if the base type makes the generic type unambiguous, we can do this:
     Iterable<String> stuff2 = new ArrayList<String>();
     if (stuff2 instanceof List<String> ls) {
+      String s = ls.get(0);
       System.out.println("if stuff 2 were a list at all, it can only contain strings, so this works");
     }
   }

@@ -10,7 +10,7 @@ package s4objectoriented;
 // namespace. If the code is running under JPMS, this must
 // be the module. If not under JPMS, everything must be in
 // the same package
-sealed interface Transporter permits Car, Truck { }
+sealed interface Transporter permits Car, Truck/*, Bicycle*/ { }
 
 // members of a sealed hierarchy must be one of sealed (with
 // children of their own), final, non-sealed, or enum. Record

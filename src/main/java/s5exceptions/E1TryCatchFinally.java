@@ -3,7 +3,7 @@ package s5exceptions;
 import java.sql.SQLException;
 
 public class E1TryCatchFinally {
-  public static void mightBreak() throws SQLException{
+  public static void mightBreak() throws SQLException {
     if (Math.random() > 0.6) {
       System.out.println("Breaking!");
       throw new SQLException("DB busted!!");

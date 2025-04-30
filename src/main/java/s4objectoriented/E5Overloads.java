@@ -8,6 +8,8 @@ public class E5Overloads {
 //  public static void doStuff(Number a, Integer b) { System.out.println("doStuff(Number, Integer)");}
 //  public static void doStuff(Integer a, Number b) { System.out.println("doStuff(Integer, Number)");}
   public static void doStuff(int... a) { System.out.println("doStuff(int...)");}
+//  public static void doStuff(Integer... a) { System.out.println("doStuff(int...)");}
+//  public static void doStuff(Integer n, Integer... a) { System.out.println("doStuff(int...)");}
 //  public static void doStuff(int a, int... b) { System.out.println("doStuff(int, int...)");}
 
   public static void main(String[] args) {

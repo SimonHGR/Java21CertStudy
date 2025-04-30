@@ -46,5 +46,16 @@ public class E4UsingCollectors {
         .entrySet() // extract the entry set from the generated Map<String, List<Student>>
         .forEach(e -> System.out.println("Students " + e.getValue() + " have grade " + e.getKey()));
 
+    // get a count of students with each letter grade
+    School.SCHOOL.getStudents().stream()
+        .collect(Collectors.groupingBy(E4UsingCollectors::getGrade,
+            // "downstream" collector processes elements that would otherwise
+            // have been placed into the list. Collectors.mapping requires *another*
+            // downstream collector to make a single item for the map's value from
+            // the potentially many items coming along
+            Collectors.counting()))
+        .entrySet() // extract the entry set from the generated Map<String, List<Student>>
+        .forEach(e -> System.out.println("Students " + e.getValue() + " have grade " + e.getKey()));
+
   }
 }
