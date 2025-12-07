@@ -1,0 +1,341 @@
+Handling Date, Time, Text, Numeric and Boolean Values
+
+1) What's the type of the object referred to by x?
+Object x = 3.14;
+
+2) What happens?
+int x = 99;
+(x++)++;
+System.out.println(x);
+
+3) What's the result?
+double x = Math.random();
+System.out.println((x > 0.5) ^ (x <= 0.5));
+
+4) Where would you look for a square root function?
+
+5) What's the result?
+String s = 'Hello';
+System.out.println(s.charAt(0));
+
+6) What's the result?
+String s = """
+    Hello
+    """;
+System.out.println(s.length());
+
+7) What's the result?
+LocalDate ld = LocalDate.of(2025, 1, 1);
+ld.plusDays(31);
+System.out.println(ld.getMonth());
+
+8) What is the result?
+System.out.println(Boolean.valueOf(" true "));
+
+----------------------------
+Controlling Program Flow
+
+1) What does this do? If it doesn't work, how do you fix it?
+Object s = "X";
+System.out.println(switch (s) {
+    case "X" -> "It's an X!";
+});
+
+2) What's the result? What if while is changed to if?
+while (9 < 2) { System.out.println("Less"); }
+System.out.println("Done");
+
+3) What happens?
+Set<String> names = Set.of("Hua", "Inaya", "Ishan");
+for (final String n : names) {
+  System.out.println(n);
+}
+
+----------------------------
+Using Object-Oriented Concepts in Java
+
+Q) given:
+class Outer {
+  class Inner {
+  }
+}
+what happens if I call:
+new Inner();
+and what might I do to fix it?
+
+1) When, if at all, is the first StringBuilder object eligible for garbage collection?
+StringBuilder sb = new StringBuilder("X"); // object created here
+sb.append("Y");
+StringBuilder sb2 = sb;
+sb = null;
+sb2 = new StringBuilder("Z");
+sb2 = null;
+
+2) What's wrong here?
+record Customer(String name, int credit) {
+  private static int nextId;
+  private int custId = nextId++;
+  Customer {
+    if (name == null || name.length() < 1) throw new IllegalArgumentException("Bad name");
+    this.name = name;
+    this.credit = credit;
+  }
+  public int credit() throws SecurityException {
+    Security.checkSecurity(); // assumet this exists
+    return this.credit;
+  }
+}
+
+3) What can go at point X and what restrictions apply?
+class Inter {
+  // Point X
+}
+
+4) What rules constrain how execution of a method that
+declares a return type of String can terminate?
+
+5) What happens?
+class P {
+  int x;
+  P(int x) { this.x = x; }
+}
+class Q extends P {
+  public String toString() { return "Q with P.x = " + x; }
+  public static void main(String[] args) {
+    System.out.println(new Q(99));
+  }
+}
+
+6) What's the output?
+class Outer {
+  String v = getValue();
+  { System.out.print("I"); }
+  static { System.out.print("S"); }
+  String getValue() { System.out.print("J"); return "K"; }
+  public static void main(String[] args) { new Outer("A"); } // << main here
+  Outer() { System.out.print("C"); }
+  Outer(String s) { this(); System.out.print(s); }
+}
+
+7) Given:
+static void doStuff(int x, long y) { System.out.println("il"); }
+static void doStuff(int x, float y) { System.out.println("if"); }
+static void doStuff(Double x, Double y) { System.out.println("DD"); }
+static void doStuff(double ... x) { System.out.println("dv"); }
+and:
+doStuff(1, 1);
+doStuff(3.14, 2.7);
+What's the output?
+
+8) Where can a private field be accessed?
+
+9) How do you make a class that creates immutable objects?
+
+10) What's the type of x?
+var x = 3.14;
+
+11) How many ways can you restrict subtyping?
+
+12) Where can you put an abstract method? What does it look like?
+
+33) What can we find at the leaf nodes of a sealed type hierarchy?
+
+14) What are three requirements for a method override?
+
+15) How can we delegate to a default method in an interface in our
+parent hierarchy?
+
+16) A parent and child class both declare a field public int x
+The value of the parent version of x is 10, that of the child part is 50
+You have a reference of the parent type, which refers to an
+object of the child type. What is the value of reference.x?
+
+17) When might a cast to an interface type be rejected by the compiler
+
+18) What happens?
+if (obj instanceof String x || x.length() > 2) System.out.println("long X");
+else System.out.println("Not");
+
+19) What happens?
+Object obj = List.of("X", "Y");
+if (obj instanceof List ls) {
+  String msg = ls.get(0) + ls.get(1);
+  System.out.println(msg);
+}
+
+20) What accessibilities are possible for interface methods?
+
+21) What happens?
+@FunctionalInterface
+interface X {
+  default void doStuff() {}
+}
+
+22) Describe the arguments and return type of the method implied here:
+ToIntBiFunction<String, LocalDate>
+
+23) What's the result?
+enum X {
+  A, B;
+  public String name() {
+    return super.toString().toLowerCase();
+  }
+  public static void main(String[] args) {
+    for (var x : X.values()) {
+      System.out.println(x.name());
+    }
+  }
+}
+
+----------------------------
+Handling Exceptions
+
+1) Your method throws IOException and FileNotFoundException
+what's the best way to ensure that both receive identical handling?
+
+2) A method in a base class is declared as throwing IOException,
+When overriding this method, which of these exceptions can be declared?
+Which if any must be declared?
+NullPointerException, FileNotFoundException, EOFException, IOException,
+SQLException, FontFormatException
+
+----------------------------
+Working with Arrays and Collections
+
+1) What happens?
+String [] sa = {null, null, null};
+List<String> ls = Arrays.asList(sa);
+sa[0] = "Hello";
+System.out.println(ls.get(0));
+
+2) How could you print the contents of a Map that has String keys
+sorted in character order ("alphabetic" for Roman character sets)
+of the keys?
+
+----------------------------
+Working with Streams and Lambda expressions
+
+1) Which Stream method always results in the same number of
+items going downstream?
+
+2) Which Stream method is able to send more, or fewer, items
+downstream?
+
+3) Which Stream method should be used if extracting a double
+value from a Customer object (one double per Customer)?
+
+4) What are four ways this lambda could be changed?
+(String s) -> { return s.length(); }
+
+5) What are two methods that can create infinite streams?
+
+6) What will be the result?
+int[] count = {0};
+int sum = IntStream.iterate(0, x -> x + 1)
+    .parallel()
+    .limit(10_000)
+    .map(x -> {
+      count[0]++;
+      return 1;
+    })
+    .sum();
+System.out.println("count = " + count[0] + ". sum = " + sum);
+
+7) What's the result?
+System.out.println(IntStream.generate(() -> 1)
+    .parallel()
+    .limit(1000)
+    .reduce(10, (a, b) -> a + b));
+}
+
+8) What type of result would you get from this (incomplete) stream?
+.map(s -> s.toLowerCase())
+.collect(Collectors.groupingBy(s -> s,
+    Collectors.counting()));
+
+9) What's the result?
+IntStream.of(1,2,3,4,5,6,7,8,9,10)
+    .parallel()
+    .limit(1000)
+    .peek(System.out::println)
+    .count();
+
+10) What's the result?
+DoubleStream.generate(() -> ThreadLocalRandom.current().nextDouble())
+    .sorted()
+    .allMatch(x -> x < 1.0);
+
+11) How could you list all the regular files in directory
+/home/hua/documents using a stream in the processing?
+
+----------------------------
+Packaging and Deploying Java Code
+
+1) Your module defines an interface for a service and implements it,
+which directives must be present in the module-info.java file?
+
+2) Your module M is coded in terms of a service that's an implementation
+of an interface in module A, and wants the implementation in module B
+What does your module-info.java file look like?
+
+3) You're doing to top down migration, at the first sign of progress
+what can you say about the jar archive containing your main method?
+
+4) How can code in a module invoke a method in a jar on the classpath?
+
+----------------------------
+Managing Concurrent Code Execution
+
+1) Name two features of platform threads that aren't meaningful for
+virtual threads.
+
+2) How can you construct a new virtual thread?
+
+3) A thread is RUNNING, and receives an interrupt. What's it's
+state now?
+
+4) Thread A writes "X" to a static String member of a class, a few
+milliseconds later Thread B reads the value and prints it. What is
+the result? What's this called?
+
+5) Your thread calls tryLock() on an already-locked Lock object,
+What happens? What if any return value will be received?
+
+6) You want to be able to count events from several threads and are
+concerned about the deleterious effects of unhandled read-modify-write
+cycles. What package will you search for help?
+
+----------------------------
+Using Java I/O API
+
+1) You want to ensure that a password is not available to
+memory scraping, how you should you read it, and what should you
+do next?
+
+2) What must happen to data between a PrintWriter and the system's
+output channel?
+
+3) What will happen here?
+class P {  P(int x) {} }
+class S extends P implements Serializable {
+  S() { super(99); }
+}
+
+4) If this object was serialized:
+class S implements Serializable {
+  private int c;
+  S(int c) { this.c = c; }
+}
+Then a new method is added, what happens when desrializing the
+stored data? How can we fix any problems?
+
+5) What happens when this object is serialized and then deserialized?
+class S implements Serializable {
+  int x, y;
+  S(int x, int y) {this.x = x; this.y = y;}
+  private void readObject(ObjectInputStream ois)
+      throws ClassNotFoundException, IOException {
+    ois.defaultReadObject();
+    int tmp = x; x = y; y = tmp;
+  }
+}

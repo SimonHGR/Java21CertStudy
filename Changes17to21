@@ -1,0 +1,10 @@
+These are the topic changes between Java 17 and Java 21 exams:
+- changes to the switch structure: pattern matching
+- record patterns (switch and instanceof)
+- more depth in discussion of equals methods
+- scoped enum expressions in switch
+- use of generic qualifiers in pattern matching instanceof
+- added method references for array construction and use of this::
+  and super:: in method reference forms
+- virtual threads
+- removal of JDBC topics

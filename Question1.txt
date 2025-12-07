@@ -1,0 +1,47 @@
+Given:
+System.out.println("\n->" + IntStream.iterate('A', c -> c + 1)
+    .sequential()         // line n1
+    .limit(26)
+    .parallel()           // line n2
+    .map(c -> ~(c++) ^ -1)
+    .peek(c -> System.out.print((char) c))
+    .mapToObj(c -> "" + (char) c)
+    .map(s -> s.toLowerCase())
+    .collect(Collectors.joining())
+    + ">>>");
+Which represents the result?
+A)
+rxmldqhujksnzabgowitvcpfye
+->abcdefghijklmnopqrstuvwxyz>>>
+B)
+abcdefghijklmnopqrstuvwxyz
+->rxmldqhujksnzabgowitvcpfye>>>
+C)
+RXMLDQHUJKSNZABGOWITVCPFYE
+->abcdefghijklmnopqrstuvwxyz>>>
+D)
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+->rxmldqhujksnzabgowitvcpfye>>>
+E)
+rxmldqhujksnzabgowitvcpfye
+->ABCDEFGHIJKLMNOPQRSTUVWXYZ>>>
+E)
+abcdefghijklmnopqrstuvwxyz
+->RXMLDQHUJKSNZABGOWITVCPFYE>>>
+F)
+abcdefghijklmnopqrstuvwxyz
+->abcdefghijklmnopqrstuvwxyz>>>
+G)
+abcdefghijklmnopqrstuvwxyz
+->ABCDEFGHIJKLMNOPQRSTUVWXYZ>>>
+H)
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+->abcdefghijklmnopqrstuvwxyz>>>
+
+I) An exception at runtime due to line n1
+
+J) An exception at runtime due to line n2
+
+K) Processing hangs indefinitely
+
+L) Processing fails due to out of memory error
