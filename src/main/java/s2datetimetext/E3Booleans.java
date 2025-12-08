@@ -22,7 +22,9 @@ public class E3Booleans {
     System.out.println(Boolean.parseBoolean("false"));
     System.out.println(Boolean.parseBoolean(" true "));
 
-
+    System.out.println(Double.parseDouble("NaN"));
+    System.out.println(Double.parseDouble("Infinity"));
+    System.out.println(Double.parseDouble("-Infinity"));
 
   }
 }

@@ -3,6 +3,7 @@ package s3progflow;
 public class E2ExpressionSwitch {
   public static void main(String[] args) {
     String s = "Hello";
+//    String s = null;
 
     switch (s) {
       case "Goodbye" -> {

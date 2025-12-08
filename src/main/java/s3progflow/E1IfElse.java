@@ -13,7 +13,7 @@ public class E1IfElse {
 
     final boolean DEBUG = false;
 //    while(DEBUG) {
-    if (false) {
+    if (DEBUG) {
       System.out.println("Never, but allowed"); // "conditional compilation"
     }
 
