@@ -25,12 +25,11 @@ interface F5 extends F3, F4 {}
 
 // But these are not OK:
 //@FunctionalInterface
-
 //interface FBad1 {} // zero abstract methods
+
 //@FunctionalInterface
 //interface FBad2 extends F3 {
 //  void doStuff1(); // this is a second abstract method
-
 //}
 
 public class E13FunctionalInterfaces {

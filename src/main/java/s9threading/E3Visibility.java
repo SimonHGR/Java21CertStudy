@@ -19,8 +19,8 @@ public class E3Visibility {
         .start(task);
     Thread.sleep(100);
 //    for (; counter < 10_000_000; counter++)
-//    while (counter.getAndIncrement() < 10_000_000)
-    while (counter.incrementAndGet() < 10_000_000)
+    while (counter.getAndIncrement() < 10_000_000)
+//    while (counter.incrementAndGet() < 10_000_000)
       ;
     System.out.println("Counter is " + counter + ". main exiting.");
 

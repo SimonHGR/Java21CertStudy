@@ -1,9 +1,9 @@
 package s4objectoriented;
 
 public class E5Overloads {
-  public static void doStuff(int a, int b) { System.out.println("doStuff(int, int)");}
+//  public static void doStuff(int a, int b) { System.out.println("doStuff(int, int)");}
 //  public static void doStuff(int a, long b) { System.out.println("doStuff(int, long)");}
-//  public static void doStuff(int a, double b) { System.out.println("doStuff(int, long)");}
+  public static void doStuff(int a, double b) { System.out.println("doStuff(int, long)");}
 //  public static void doStuff(long a, int b) { System.out.println("doStuff(long, int)");}
 //  public static void doStuff(Integer a, Integer b) { System.out.println("doStuff(Integer, Integer)");}
 //  public static void doStuff(Number a, Integer b) { System.out.println("doStuff(Number, Integer)");}
@@ -14,7 +14,8 @@ public class E5Overloads {
 //  public static void doStuff(int a, int... b) { System.out.println("doStuff(int, int...)");}
 
   public static void main(String[] args) {
-    doStuff(1,1);
+    doStuff(1, 1);
+//    doStuff(1,new int[]{1});
   }
   /*
   1) exact match?

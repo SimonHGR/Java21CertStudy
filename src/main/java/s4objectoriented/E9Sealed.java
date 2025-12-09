@@ -18,7 +18,7 @@ sealed interface Transporter permits Car, Truck/*, Bicycle*/ { }
 // The intention is to create a base type for which all possible
 // (or almost all) assignable types are known, and any attempt to
 // add new ones flags the compiler to tell us we need to take care
-final class Car implements Transporter {
+/*non-sealed*/ final class Car implements Transporter {
   private int seats;
   public Car(int seats) {
     this.seats = seats;
@@ -43,7 +43,7 @@ final class Car implements Transporter {
 
 // if a branch of the hierarchy is allowed to have uncontrolled children,
 // it can be marked non-sealed
-non-sealed class Truck implements Transporter {
+/*non-sealed */final class Truck implements Transporter {
   private int gvw;
   private int chassisWeight;
 

@@ -2,6 +2,7 @@ package s4objectoriented;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 // NOTE, in general, a big reason for immutability is to avoid errors, in a class such
@@ -53,8 +54,12 @@ final class Student {
   // and destroy the data. In this situation, Collections.unmodifiableList(courses) would provide a
   // "proxy" that allows reading the list, but not changing it. Alternatively (but expensively) a
   // "defensive copy" might be made and returned.
+//  public List<String> getCourses() {
+//    return courses;
+//  }
   public List<String> getCourses() {
-    return courses;
+//    return List.copyOf(courses);
+    return Collections.unmodifiableList(courses);
   }
 
   // immutable data needs to be able to represent changes, this is done by creating a new object
@@ -85,4 +90,21 @@ final class Student {
 }
 
 public class E7Immutable {
+}
+
+class ArraysAsList {
+  public static void main(String[] args) {
+    String [] names = {"Ishan", "Inaya", "Hua"};
+    List<String> nameList = Arrays.asList(names);
+//    List<String> nameList = List.of(names);
+    List<String> nameList2 = List.copyOf(nameList);
+    System.out.println(nameList2 == nameList);
+    System.out.println(nameList);
+    names[0] = "Efrat";
+    System.out.println(nameList);
+    nameList.set(1, "Alicia");
+    System.out.println(nameList);
+    nameList.add("Juan");
+    System.out.println(nameList);
+  }
 }

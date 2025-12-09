@@ -20,14 +20,21 @@ public class E12PatternInstanceof {
     // only where it has *definitely* been initialized
     System.out.println(obj instanceof String s && s.length() > 3 ? "It's a longish String" : "Short, or not a String");
 
+    System.out.println(!(obj instanceof String s) || s.length() > 3);
     // Limitations with generics
     Object stuff = new ArrayList<String>();
     if (stuff instanceof List) {
       System.out.println("Yes, it's a list, raw, no pattern");
     }
 
+    int x = 9;
+    do {
+//      if (Math.random() > 0.5) break;
+    } while(!(obj instanceof String st));
+    System.out.println("s is " + st);
+
     if (stuff instanceof List l) {
-//      String o = (String)l.get(0);
+//      String o = /*(String)*/l.get(0);
       System.out.println("Yes, it's a list, raw, in a pattern");
     }
 
